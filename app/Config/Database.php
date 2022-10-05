@@ -89,3 +89,14 @@ class Database extends Config
         }
     }
 }
+
+$db = \Config\Database::connect();
+$query = $db->query('SELECT * FROM settings LIMIT 1');
+$row   = $query->getRow();
+if(!$row){
+    throw new \Exception('No Config File in Database, Please Run  php spark db:seed InsertConfigData in root folder');
+}
+defined('SITE_DATA_NAME') || define('SITE_DATA_NAME', $row->site_name);
+defined('SITE_DATA_DESCRIPTION') || define('SITE_DATA_DESCRIPTION', $row->site_description);
+defined('SITE_DATA_LOGIN_LOGO') || define('SITE_DATA_LOGIN_LOGO', $row->long_logo);
+
