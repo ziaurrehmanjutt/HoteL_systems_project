@@ -11,4 +11,10 @@ class Super_Base_Model extends Model
         parent::__construct();
         $this->db = \Config\Database::connect();
     }
+    public function loadLanguages(){
+        $builder =  $this->db->table('local_languages');
+        $builder->select('*')->where('status','active');
+        $result = $builder->get()->getResultArray();
+        return $result;
+    }
 }

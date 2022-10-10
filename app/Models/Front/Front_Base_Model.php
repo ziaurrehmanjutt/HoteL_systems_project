@@ -6,5 +6,7 @@ use CodeIgniter\Model;
 
 class Front_Base_Model extends Super_Base_Model
 {
-    // ...
+    function __construct(){
+        parent::__construct();
+    }
 }

@@ -21,6 +21,22 @@ use Psr\Log\LoggerInterface;
  */
 abstract class BaseController extends Controller
 {
+
+    public function __construct()
+    {
+        helper("cookie");
+        $session = session();
+        
+        $cData = get_cookie("hotel_local_language");
+        if(!$cData){
+            $cData = $session->get('hotel_local_language');
+        }
+        if(!$cData){
+            $cData = "en";
+        }
+        set_cookie("hotel_local_language",$cData);
+        $session->set('hotel_local_language',$cData);
+    }
     /**
      * Instance of the main Request object.
      *
