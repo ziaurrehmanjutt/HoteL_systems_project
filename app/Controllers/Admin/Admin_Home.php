@@ -7,11 +7,10 @@ class Admin_Home extends Admin_Base
 {
     public function index()
     {
-
-
-        echo "1";
-
-    
-        // return $this->load_views('profile/login.php');
+        return $this->load_views('sites/sites.php');
+    }
+    public function addSite()
+    {
+        return $this->load_views('sites/add_site.php',[],'sites/add_site_js');
     }
 }

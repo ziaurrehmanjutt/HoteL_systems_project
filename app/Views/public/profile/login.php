@@ -8,10 +8,13 @@
       <img width="100%" height="100px" src="<?= base_url('assets/theme/user') . '/' . SITE_DATA_LOGIN_LOGO ?>">
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Welcome! Sign into Your Account</p>
+      <!-- <p class="login-box-msg">Welcome! Sign into Your Account</p> -->
+      <p class="login-box-msg">
+        <?=lang('public/Profile.login_welcome');?>
+      </p>
       <form action="" method="post">
         <div class="input-group mb-3">
-          <input name="email" value="<?= isset($cookie['email']) ? $cookie['email'] : "" ?>" type="email" required class="form-control" placeholder="Email">
+          <input name="email" value="<?= isset($cookie['email']) ? $cookie['email'] : "" ?>" type="email" required class="form-control" placeholder="<?=lang('public/Profile.login.email')?>">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -19,7 +22,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" value="<?= isset($cookie['password']) ? $cookie['password'] : "" ?>" required name="password" class="form-control" placeholder="Password">
+          <input type="password" value="<?= isset($cookie['password']) ? $cookie['password'] : "" ?>" required name="password" class="form-control" placeholder="<?=lang('public/Profile.login.password')?>">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -41,13 +44,13 @@
             <div class="icheck-primary">
               <input name="remember_me" <?= isset($cookie['remember_me']) ? "checked" : "" ?> type="checkbox" id="remember">
               <label for="remember">
-                Remember Me
+              <?=lang('public/Profile.login.remember_me')?>
               </label>
             </div>
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button name="login" type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button name="login" type="submit" class="btn btn-primary btn-block"><?=lang('public/Profile.login.sign_in')?></button>
           </div>
           <!-- /.col -->
         </div>
@@ -69,19 +72,20 @@
       <div class="row">
         <div class="col-sm-6">
           <p class="mb-1">
-            <a href="#">I forgot my password</a>
+            <a href="#"><?=lang('public/Profile.login.forget_password')?></a>
           </p>
         </div>
-
         <div class="col-sm-6">
           <div class="dropdown show">
+          <?php $cr = "English";
+            foreach ($languages as $value) {if($value['short_name'] == $current) $cr = $value['language_name'];} 
+          ?>
             <a class="btn dropdown-toggle" style="float: right;" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              English
+              <?=$cr?>
             </a>
-
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <?php foreach ($languages as $key => $value) {
-                print "<a class=\"dropdown-item\" href=\"".base_url('lang/change/').$value['short_name'].">Arabic</a>";
+                print "<a class=\"dropdown-item\" href=\"".base_url($value['short_name'].'/login')."\">{$value['language_name']}</a>";
               } ?>
             </div>
           </div>
@@ -99,3 +103,4 @@
   </div>
   <!-- /.card -->
 </div>
+

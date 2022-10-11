@@ -6,6 +6,11 @@ use App\Controllers\BaseController;
 
 class Public_Base extends BaseController
 {
+    public $current_language;
+    function __construct(){
+        parent::__construct();
+        $this->current_language = service('request')->getLocale();
+    }
     public function index()
     {
         echo "123";

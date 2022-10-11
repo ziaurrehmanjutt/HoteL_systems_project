@@ -36,21 +36,25 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/login', 'Front\Login::index');
-$routes->post('login', 'Front\Login::index');
+$routes->get('{locale}', 'Home::index');
+$routes->get('{locale}/login', 'Front\Login::index');
+$routes->post('{locale}/login', 'Front\Login::index');
 
 
 
 
 ////Super Admin Routes
-$routes->get('admin/home', 'Admin\Admin_Home::index');
+// $routes->get('{locale}/admin/home', 'Admin\Admin_Home::index');
+// $routes->get('{locale}/admin/sites/add', 'Admin\Admin_Home::addSite');
+
+$routes->group('{locale}/admin', static function ($routes) {
+    $routes->get('home', 'Admin\Admin_Home::index');
+    $routes->get('sites/add', 'Admin\Admin_Home::addSite');
+});
 
 
 
 
-
-////Additinal Global Routed
-$routes->get('lang/change/(:any)', 'Home::changeLanguage/$1');
 
 /*
  * --------------------------------------------------------------------
