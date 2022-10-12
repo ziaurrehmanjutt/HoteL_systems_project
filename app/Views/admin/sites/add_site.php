@@ -29,7 +29,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form id="quickForm">
+                        <form id="quickForm" method="POST">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -70,7 +70,7 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary"><?=lang('admin/Branches.branch_add.add_branch')?></button>
+                                <button name="add_branch" type="submit" class="btn btn-primary"><?=lang('admin/Branches.branch_add.add_branch')?></button>
                             </div>
                         </form>
                     </div>

@@ -57,34 +57,30 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>183</td>
-                                        <td>John Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-success">Approved</span></td>
-                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>219</td>
-                                        <td>Alexander Pierce</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-warning">Pending</span></td>
-                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>657</td>
-                                        <td>Bob Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-primary">Approved</span></td>
-                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>175</td>
-                                        <td>Mike Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-danger">Denied</span></td>
-                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                    </tr>
+                                    <?php foreach ($list_branches as  $value) {
+                                       print "<tr>";
+                                       print "<td>{$value['branch_name']}</td>";
+                                       print "<td>{$value['branch_address']}</td>";
+                                       print "<td>{$value['branch_zip']}</td>";
+                                       print "<td>{$value['status']}</td>";
+                                       print "<td>
+                                                <a href=\"".base_url(getCurrentLocal().'/admin/site/update/'.$value['branch_id'])."\" title=\"Edit Branch\" class=\"btn btn-primary btn-sm\">
+                                                    <i class=\"fas fa-edit\"></i></i>
+                                                </a>
+
+                                                <a href=\"".base_url(getCurrentLocal().'/admin/site/update/'.$value['branch_id'])."\" title=\"See Location On Map\" class=\"btn btn-primary btn-sm\">
+                                                    <i class=\"fas fa-map-marker-alt\"></i></i>
+                                                </a>
+                                                <a href=\"".base_url(getCurrentLocal().'/admin/site/update/'.$value['branch_id'])."\" title=\"See Branch Info and Stat\" class=\"btn btn-primary btn-sm\">
+                                                    <i class=\"fas fa-tachometer-alt\"></i></i>
+                                                </a>
+                                                <a href=\"".base_url(getCurrentLocal().'/admin/site/update/'.$value['branch_id'])."\" title=\"Login to this Branch\" class=\"btn btn-primary btn-sm\">
+                                                    <i class=\"fas fa-sign-in-alt\"></i></i>
+                                                </a>
+
+                                            </td>";
+                                       print "</tr>";
+                                    } ?> 
                                 </tbody>
                             </table>
                         </div>

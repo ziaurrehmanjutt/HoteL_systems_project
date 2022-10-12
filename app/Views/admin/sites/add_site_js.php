@@ -3,11 +3,11 @@
 
 <script>
   $(function() {
-    $.validator.setDefaults({
-      submitHandler: function() {
-        alert("Form successful submitted!");
-      }
-    });
+    // $.validator.setDefaults({
+    //   submitHandler: function() {
+
+    //   }
+    // });
     $('#quickForm').validate({
       rules: {
         branch_name: {

@@ -40,7 +40,9 @@ $routes->get('{locale}', 'Home::index');
 $routes->get('{locale}/login', 'Front\Login::index');
 $routes->post('{locale}/login', 'Front\Login::index');
 
-
+///Gloval Common
+//Shared
+$routes->get('{locale}/error/404', 'Front\Shared::noFound');
 
 
 ////Super Admin Routes
@@ -50,6 +52,9 @@ $routes->post('{locale}/login', 'Front\Login::index');
 $routes->group('{locale}/admin', static function ($routes) {
     $routes->get('home', 'Admin\Admin_Home::index');
     $routes->get('sites/add', 'Admin\Admin_Home::addSite');
+    $routes->post('sites/add', 'Admin\Admin_Home::addSite');
+    $routes->get('site/update/(:any)', 'Admin\Admin_Home::updateSite/$1');
+    $routes->post('site/update/(:any)', 'Admin\Admin_Home::updateSite/$1');
 });
 
 
